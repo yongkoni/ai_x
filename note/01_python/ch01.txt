@@ -1,5 +1,5 @@
 기업맞춤형 AI+X 융복합 인재 양성 orientation
 AI 빅데이터의 속성 정리
-Python 설치
 Git 설치 및 생성
 나의 github 생성 및 동기화
+Python 개요 및 GPU사용을 위한 python 환경 설정

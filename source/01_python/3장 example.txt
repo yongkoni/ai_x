@@ -1,0 +1,17 @@
+# ex1. numbers에서 10이상만 추출
+
+numbers = [1, 3, 5, 9, 10, 12, 13, 20]
+
+[data for data in numbers if data >= 10]
+
+# ex2. fruits에서 5글자가 넘는 과일만 추출
+
+fruits = ['mango', 'apple', 'orange', 'kiwi']
+
+[data for data in fruits if len(data) > 5]
+
+# ex3. 3이상의 요소들의 제곱을 추출
+
+L = [1, 2, 3, 4, 5]
+
+[data ** 2 for data in L if data >= 3]

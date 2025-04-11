@@ -1,0 +1,7 @@
+2장 자료형과 연산자
+
+7절 날짜시간
+	특정시점 : datetime(년, 월, 일, 시, 분, 초)
+	지금시점 : datetime.now()
+	date(년, 월, 일) / datetime.now().date()
+	time(시, 분, 초) / datetime.now().time()

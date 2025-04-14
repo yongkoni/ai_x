@@ -1,0 +1,45 @@
+# 다음 리스트가 주어졌을 경우 요구사항대로 코드를 작성하시오
+numbers =[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+# ex1. 숫자 100을 맨 뒤에 추가하세요
+numbers.append(100)
+numbers
+
+#ex2. 다음 리스트를 numbers 리스트 맨 뒤에 추가하세요
+data = [200, 300, 400, 500]
+
+numbers.extend(data)
+numbers
+
+# ex3. 처음 다섯 개 숫자만 출력하세요
+numbers[:5]
+
+# ex4. 리스트에서 짝수 번째 데이터만 출력하세요
+numbers[::2]
+
+# ex5. 짝수 번째 데이터를 모두 0으로 바꾸세요
+for num in range(len(numbers)) :
+    if num % 2 == 0 :
+        numbers[num] = 0
+numbers
+
+# ex6. 데이터를 역순으로 나열하세요(내림차순 정렬이 아닙니다)
+numbers[::-1]
+
+# 다음 딕셔너리 데이터가 주어졌을 경우 요구사항대로 코드를 작성하세요
+member_info = {"name":"홍길동", "age":20, "address":"서울시 마포구","score":90}
+
+# ex7. address값을 출력하세요
+member_info['address']
+
+# ex8. score 를 출력하고 member_info 딕셔너리에서 삭제하세요
+remove_data = member_info.pop('score')
+print(remove_data)
+print(member_info)
+
+#ex9. address를 "서울시 서대문구"로 변경하세요
+member_info['address']='서울시 서대문구'
+member_info
+
+#ex10. member_info 딕셔너리 데이터의 값을 리스트로 출력하세요
+list(enumerate(member_info.items()))

@@ -1,0 +1,20 @@
+5장 함수
+
+4절. 람다식
+	return 한줄짜리 작은 익명함수
+	funcname = lambda 매개변수들 : 리턴값
+	funcname(매개변수들)
+	(lambda 매개변수들 : 리턴값)(매개변수들)
+	용도 = (1)함수의 매개변수 (2)함수의 return값
+	ex1. map(func, 가공할 vector)
+	ex2. filter(func, 추출할 vector)
+	ex3. sort(key = 정렬될데이터를 return할 함수, reverse = T/F)
+
+5절 파이썬 내장 함수
+	import하지 않고 바로 사용 가능한 함수
+	키워드처럼 간주되므로, 식별자(변수명, 함수명, 클래스명)로 사용하는 것을 피한다
+	globals() : 전역변수 리스트
+	all([a, b, c, ...]) : a, b, c, ... 전부 True면 True / 하나라도 False면 False
+	round() : 반올림
+	※ import numpy as np : numpy 모듈을 np라는 이름으로 load
+	   np.round(), np.ceil(), np.floor()  # 반올림, 올림, 내림

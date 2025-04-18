@@ -1,0 +1,42 @@
+6장 모듈과 패키지
+
+1절. 패키지 및 모듈 사용하기
+	import A : A모듈을 load
+	import A : A패키지밑의 __init__모듈을 load
+	from A import B : A패키지 안의 B모듈 load
+	from A import B : A모듈 안의 B함수 load
+	from A.B import C : A패키지밑의 B모듈안의 C함수 load
+
+	import A as L : A모듈을 L이름으로 load
+	import A as L : A패키지를 L이름으로 __init__모듈을 load
+	from A import B as L : A패키지 안의 B모듈을 L별칭으로 load
+	from A import B as L : A모듈 안의 B함수를 L이름으로 load
+	from A.B import C as L : A패키지밑의 B모듈안의 C함수를 L이름으로  load
+
+2절. 패키지 설치 및 삭제
+	* 아나콘다 프롬프트에서 실행
+	- 패키지 설치 : pip install 패키지명[==버전] / conda install 패키지명[==버전]
+               	       pip install 패키지파일명(*.whl 출처 : pypi.org)
+	- 패키지 확인 : pip show 패키지명            / conda list 패키지명
+	- 패키지 삭제 : pip uninstall 패키지명       / conda remove 패키지명
+
+	* 패키지 아래 __init__.py에 패키지 설정 내용이 추가 *
+
+7장 객체 지향 프로그래밍
+
+1절 객체와 클래스
+	class 클래스명 (상속받을 클래스명) :
+    		변수나 함수들 선언
+
+2절. 생성자와 소멸자
+	생성자 : __init__(self, 매개변수, ...) - 객체가 생성될 때 자동 생성
+        		객체 생성시 100% 필요한 인스턴스 변수 초기화를 포함
+	소멸자 : __del__(self) - 객체가 소멸될 때 자동 실행
+        		인스턴스 객체의 래퍼런스 카운트가 0이 될 때 실행
+
+3절. 변수와 메소드
+	인스턴스 변수 vs 클래스 변수
+	인스턴스 메소드(self) vs 클래스 메소드(clz) vs static 메소드()
+		인스턴스 메소드 : 첫번째 인자에 self를 꼭 명시. 객체를 통해서만 호출할 수 있는 메소드
+		클래스 메소드 : 메소드 위에 @classmethod를 선언한 메소드. 첫번째 인자에 cls(clz) 꼭 명시
+		static 메소드 : 메소드 위에 @staticmethod를 선언한 메소드. 인자를 넣지 않음

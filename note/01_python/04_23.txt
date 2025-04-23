@@ -1,0 +1,30 @@
+9장 파일 io(입/출력) 프로그래밍
+
+5절 hdf5(h5)파일 읽기/쓰기 : h5py 사용
+	hdf5파일 쓰기
+		딕셔너리리스트를 hdf5파일에 쓰기
+		데이터프레임을 hdf5파일에 쓰기
+		seaborn : 시각화 패키지. 학습을 윈한 데이터셋 다수
+		import h5py
+		with h5py.File('파일명', 'w') as 변수명 :
+		.create_group : 그룹 생성
+		.create_dataset : 데이터셋 생성
+	hdf5 파일 읽기
+		hdf5파일을 딕셔너리리스트로 읽기
+		hdf5파일을 데이터프레임으로 읽기
+		import h5py
+		with h5py.File('파일명', 'r') as 변수명 :
+
+6절 연습문제 : 고객관리
+	Customer 클래스 작성 : class Customer :
+		'고객데이터와 as_dic(), to_list_style(txt백업시), __str__()'
+		def to_customer(row) :
+    			row = (txt파일 내용)을 매개변수로 받아 Customer 객체로 return 
+	0. 처음 실행시 호출 : def load_customers() :
+		ch09_customers.txt(백업데이터)에서 customer_list return
+		파일이 없으면 빈 파일 생성, customer_list = [] return
+	1. 입력 : def fn1_insert_customer_info() :
+	2. 전체 출력 : def fn2_print_customers(customer_list) :
+	3. 삭제 : def fn3_delete_customer(customer_list) :
+	4. 이름찾기 : def fn4_search_customer(customer_list) :
+	

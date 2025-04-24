@@ -1,0 +1,71 @@
+9장 파일 io(입/출력) 프로그래밍
+
+6절 연습문제 : 고객관리
+	Customer 클래스 작성 : class Customer :
+		'고객데이터와 as_dic(), to_list_style(txt백업시), __str__()'
+		def to_customer(row) :
+    			row = (txt파일 내용)을 매개변수로 받아 Customer 객체로 return 
+	0. 처음 실행시 호출 : def load_customers() :
+		ch09_customers.txt(백업데이터)에서 customer_list return
+		파일이 없으면 빈 파일 생성, customer_list = [] return
+	1. 입력 : def fn1_insert_customer_info() :
+	2. 전체 출력 : def fn2_print_customers(customer_list) :
+	3. 삭제 : def fn3_delete_customer(customer_list) :
+	4. 이름찾기 : def fn4_search_customer(customer_list) :
+	5. 내보내기(CSV) : def fn5_save_customer_csv(customer_list) :
+	9. 종료 : def fn9_save_customer_txt(customer_list) :
+	main()
+	Visual Studio Code에서 실행
+
+10장 N차원 배열 다루기
+	[numpy](https://numpy.org/doc/stable/)
+	[numpy API](https://numpy.org/doc/stable/reference/index.html)
+	N차원 배열 객체
+	2차원 배열은 행렬개념
+	numpy 패키지는 C언어로 구현되어 고성능 수치 계산 패키지
+
+1절 너머파이 패키지
+	import numpy as np
+	Numpy 패키지 함수와 속성
+		- 배열속성
+  		  dtype : 요소들의 type
+  		  itemsize : 한 요소의 bytesize
+ 		  ndim : 차원수(축수)
+  		  size : 배열 요소 갯수
+  		  shape : 배열 구조 (튜플)
+		- 배열 생성 함수
+		  np.array(obj, dtype, copy = True)
+  		  np.array(obj, dtype, copy = True).reshape(행수, 열수)
+  		  np.ones(tup, dtype)
+  		  np.zeros(tup, dtype)
+  		  np.full(tup, 초기화)
+  		  np.empty(tup, dtype)
+  		  np.random.random(tup) 
+  		  np.random.uniform(low = 0, high =1.0, size = tup)
+  		  np.random.normal(loc = 0, scale = 1.0, size = tup) 
+  		  np.random.rand(n)
+		  np.random.randn(n)
+		  np.linspace(from, to, count)
+  		  np.arange(from, stop, step)
+		- 배열 차원 변경
+  		  reshape()
+  		  ravel(), flatten() : 1차원 변경
+
+2절 넘파이 배열
+	array(list나 tuple, dtype = np.xxx, copy = True/False)
+	np.zeros(tup) : 요소들이 다 0
+	np.ones(tup) : 요소들이 다 1
+	np.full(tup, 기본값) : 요소들이 다 기본값
+	np.empty(tup) : 요소들이 임의의 값 (메모리 상태에 따라 달라짐)
+	np.random.random(tup) : 0부터 1미만의 균등분포를 갖는 랜덤값
+	np.random.uniform(low = 0, high = 1.0, size = tup) : low부터 high미만의 균등분포를 갖는 랜덤값
+	np.random.normal(loc = 0, scale = 1.0, size = tup) : 평균loc와 표준편차scale을 갖는 정규분포 랜덤값
+	np.random.rand(n) : 균등분포의 1차원 난수 배열 발생 (난수 n개)
+	np.random.randn(n) : 표준정규분포(평균이 0, 표준편차가 1인 정규분포)의 1차원 난수 배열 발생 (난수 n개)
+	cf. np.random.randint(n) : 0부터 n미만의 정수 난수 1개 발생
+	np.arange(from, stop, by, dtype) : from부터 stop앞까지 by씩 증감하는 정수 배열
+	np.linspace(from, to, count) : from부터 to까지(to포함) count개 숫자를 1차원 배열
+	reshape([면수,] 행수, 열수) : -1이 올 수도
+	resize([면수,] 행수, 열수) : -1 불가
+	T : 전치행렬로 변환
+	transpose() : 전치행렬로 변환

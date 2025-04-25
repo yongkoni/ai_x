@@ -1,0 +1,80 @@
+10장 N차원 배열 다루기
+
+2절 넘파이 배열
+	array(list나 tuple, dtype = np.xxx, copy = True/False)
+	np.zeros(tup) : 요소들이 다 0
+	np.ones(tup) : 요소들이 다 1
+	np.full(tup, 기본값) : 요소들이 다 기본값
+	np.empty(tup) : 요소들이 임의의 값 (메모리 상태에 따라 달라짐)
+	np.random.random(tup) : 0부터 1미만의 균등분포를 갖는 랜덤값
+	np.random.uniform(low = 0, high = 1.0, size = tup) : low부터 high미만의 균등분포를 갖는 랜덤값
+	np.random.normal(loc = 0, scale = 1.0, size = tup) : 평균loc와 표준편차scale을 갖는 정규분포 랜덤값
+	np.random.rand(n) : 균등분포의 1차원 난수 배열 발생 (난수 n개)
+	np.random.randn(n) : 표준정규분포(평균이 0, 표준편차가 1인 정규분포)의 1차원 난수 배열 발생 (난수 n개)
+	cf. np.random.randint(n) : 0부터 n미만의 정수 난수 1개 발생
+	np.arange(from, stop, by, dtype) : from부터 stop앞까지 by씩 증감하는 정수 배열
+	np.linspace(from, to, count) : from부터 to까지(to포함) count개 숫자를 1차원 배열
+	reshape([면수,] 행수, 열수) : -1 사용하면 자동계산
+  	resize(tup) : -1 사용 불가, return값이 없음
+  	ravel(), flatten() : 1차원 변경
+	T : 전치행렬로 변환
+	transpose() : 전치행렬로 변환
+	배열 출력 옵션 변경
+		np.set_printoptions(threshold = 10000)
+		np.set_printoptions(threshold = sys.maxsize)
+		np.set_printoptions(threshold = np.inf)
+	배열 연산
+  		요소별 연산, 브로드케스팅
+  		행렬연산(2차원) @(dot함수), 단위행렬(정방행렬)
+  		범용함수 np.add(), np.multiply(), np.substract(), np.sqrt()
+		sum, min, max, mean, var(분산), std(표준편차), argmax(최대값의 인덱스)
+3절 배열 합치기 / 분리하기
+	배열 합치기
+  		np.vstack(tup)
+  		np.hstack(tup)
+  		np.dstack(tup) : 마지막 축(열)들끼리 합침
+  		np.concatenate(tup, axis)
+ 		np.column_stack(tup) : 1차원 배열을 열단위로 배열하여 2차원으로 합침
+  		np.row_stack(tup) : 행단위로 합침
+  		np.stack(tup, axis)
+  		np.r_[a, b, ...] : row단위로 쌓음
+  		np.c_[a, b, ...] : 컬럼으로 쌓아서 합침
+	배열 분리하기
+		np.vsplit(ary, 정수나 인덱스벡터) == np.split(ary, 정수나 인덱스벡터, axis = 0)
+  		np.hsplit(ary, 정수나 인덱스벡터) == np.split(ary, 정수나 인덱스벡터, axis = 1)
+  		np.dsplit(ary, 정수나 인덱스벡터) == np.split(ary, 정수나 인덱스벡터, axis = 2)
+  		np.array_split(ary, 정수나 인덱스벡터, axis) : 나눠지지 않는 정수로도 split 가능
+
+4절 복사와 뷰
+	할당 : a = b
+	뷰(view) : a.view()
+		슬라이싱할 경우 자동 view 생성
+	깊은 복사 : a.copy()
+
+5절 고급인덱싱
+	인덱스 배열로 인덱싱
+	palette = np.array([[0, 0, 0],            # black
+                    		[255, 0, 0],         # red
+                   		[0, 255, 0],         # green
+                    		[0, 0, 255],         # blue
+                    		[255, 255, 255]])  # white
+	image_index = np.array([[4, 4, 4, 0, 0, 0, 0, 4, 4, 4],
+                       		       [4, 0, 0, 4, 4, 4, 4, 0, 0, 4],
+                        	       [0, 0, 4, 4, 4, 4, 4, 4, 0, 0],
+                        	       [0, 4, 4, 1, 4, 4, 3, 4, 4, 0],
+                        	       [0, 4, 4, 1, 4, 4, 3, 4, 4, 0],
+                         	       [0, 4, 4, 4, 4, 4, 4, 4, 4, 0],
+                        	       [0, 4, 4, 2, 4, 4, 2, 4, 4, 0],
+                        	       [4, 0, 4, 4, 2, 2, 4, 4, 0, 4],
+                        	       [4, 4, 0, 4, 4, 4, 4, 0, 4, 4],
+                        	       [4, 4, 4, 0, 0, 0, 0, 4, 4, 4]])
+	image_data = palette[image_index]
+	논리 배열을 이용한 인덱싱
+		논리 배열을 이용한 인덱싱 시 True요소만 추출
+
+6절 선형대수
+	2차원 넘파이배열을 행렬
+		행렬 곱 : @, dot(), 단위행렬
+		역행렬 : np.linalg.inv(행렬) : 역행렬 @ 행렬 = 단위행렬
+		전치행렬 : 행렬.T / 행렬.transpose()
+	

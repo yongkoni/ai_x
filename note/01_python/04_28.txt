@@ -1,0 +1,66 @@
+10장 N차원 배열 다루기
+
+6절 선형대수
+	2차원 넘파이배열을 행렬
+		행렬 곱 : @, dot(), 단위행렬
+		역행렬 : np.linalg.inv(행렬) : 역행렬 @ 행렬 = 단위행렬
+		전치행렬 : 행렬.T / 행렬.transpose()
+	선형 연립 방정식 풀기(독립변수1, 데이터2)
+		X @ wb = Y
+		X의 역행렬 @ X @ wb = X의 역행렬 @ Y
+		wb = X의 역행렬 @ Y
+	선형연립방정식 풀기(회귀분석) : 독립변수 1개 데이터 n개
+		np.linalg.inv(X)  X가 정방행렬이 아니면 역행렬을 구할 수 없음
+		X @ wb = Y
+		X.T @ X @ wb = X.T @ Y
+		(X.T @ X)의 역행렬 @ X.T @ X @ wb = (X.T @ X)의 역행렬 @ X.T @ Y
+		X_의 역행렬 @ X_ @ wb = X_의 역행렬 @ X.T @ Y
+		X의 역행렬 @ X @ wb = X의 역행렬 @ Y
+
+
+11장 데이터프레임과 시리즈(Pandas)
+
+1절 판다스 패키지
+	데이터 분석을 위해 반드시 알아야 할 패키지
+	넘파이 기반으로 다른 많은 라이브러리와 잘 통합되도록 설계
+	1차원 구조를 갖는 시리즈, 2차원 구조를 갖는 데이터프레임(excel의 스프레드시트)을 제공
+	판다스 장점 : 파일io, 부분 데이터 추출, 크기변경, 데이터 분할, 병합, 정렬, 결축치 처리, 
+		     피벗과 언피벗(와이드포멧과 통포멧)에 용이
+	[Pandas API reference](https://pandas.pydata.org/docs/reference/index.html)
+	[Pandas docs](https://pandas.pydata.org/docs/index.html)
+	import pandas as pd
+	data = pd.read_csv('파일명', encoding = '인코딩 방식)
+	.head(n) : 상위 n개의 행만 가져오기
+
+2절 데이터 프레임 만들기
+	딕셔너리를 이용해서 데이터프레임 만들기
+		pd.DataFrame(data = d)
+		.info() : .dtype보다 훨씬 많이 씀
+		결측치는 실수형(float64). 정수형변환 불가(결측치대체를 한후 정수형변환)
+	리스트를 이용해서 데이터 프레임 만들기
+		pd.DataFrame(data = {'책이름':title, '가격':price})
+		pd.DataFrame(np.c_[title, price], columns = ['책이름','가격'])
+	read_csv
+		pd.read_csv(r'파일위치/파일명',
+                 		     encoding = '인코딩 방식',
+                 		     sep=',',
+                                         low_memory = False,  (데이터 용량이 클 경우만 기입_
+                 		     nrows = n 처음 n행만 
+               		    )
+		(1) CSV 파일 불러오기(기본값)
+		    encoding=utf-8, sep=',', csv파일의 첫번째 줄을 header, #이 있는 줄도 데이터로 인식
+		    .astype()으로 형변환 가능
+		(2) 특정행 제외하고 csv파일읽기
+		     skiprows = [a, b] (a, b번째 행은 제외하고 읽어오기)
+		(3) 주석(#)제외, datetime형 필드 지정하여 읽기
+		    comment = '#'  (주석(#) 제외)
+		    parse_dates = ['Birth'])  (datetime형으로 읽어올 필드 지정)
+		(4) sep = '|', 상위 n행만 읽어오기
+		    sep = '|'
+                            nrows = n
+	패키지에서 가져오기 : iris 데이터
+		방법 1 : sklearn (머신러닝 패키지)
+			sklearn : 머신러닝 패키지 (전처리 함수, 머신러닝 함수, 성능평가를 위한 함수, 학습데이터 셋)
+			from sklearn import datasets
+		방법 2 : statsmodels (R 데이터)
+		방법 3 : seaborn (시각화 패키지)

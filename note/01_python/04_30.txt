@@ -1,0 +1,63 @@
+11장 데이터프레임과 시리즈(Pandas)
+
+8절 기초 통계 분석    * 판다스 : 기초통계 / statsmodels : 난이도 있는 통계
+	count : NaN을 제외한 갯수
+	min : 열별 최소값 (문자필드는 코드값이 작은 것)
+	max
+	sum
+	cumsum : 누적합
+	mean
+	rolling(n).mean() : 데이터 변동(노이즈)가 다소 있을 때, 추세(패턴)을 부드럽게 보고 싶을 때
+	var : 분산
+	std : 표준편차
+	median : 중위수(50%지점)   행들의 중수 (열별 중위수)
+		numeric_only = True : numeric만 적용
+	qunantile : 분위수 - (0사분위수, 1사분위수(25%), 2사분위수(50%), 3사분위수(75%), 4사분위수(100%))
+		  → 이상치 구할 때 사용 IQR = Q3 - Q1 Q1 - 1.5 * IQR ~ Q3 + 1.5 * IQ 이외의 값은 이상치
+		: 데이터프레임 시리즈에서 사분위수
+	describe : 요약통계량
+		(1) 기본 요약 통계량 : .describe()  
+			숫자열과 문자열이 같이 있을 경우 : 숫자열만
+			문자열에서의 요약 통계량 : 데이터갯수, 데이터종류(unique), 최빈데이터(top), 최빈데이터갯수(freq)
+		(2) describe()의 include와 exclude 매개변수
+			.describe(include = object)  object형인 컬럼만 추출
+			.describe(exclude = object)  object형인 컬럼만 제외하고 기본 통계량
+			.unique()  특정 컬럼의 고유 값들의 종류
+			.value_counts()
+	cov() : 공분산
+	corr : 상관관계(계수)  범위 : [-1 <= 상관계수 <= 1]
+	interpolation = 'nearest' : 정확한 구간의 값이 없을 경우 가까운 데이터 출력
+	interpolation = 'midpoint' : 정확한 구간을 출력
+	
+9절 데이터 그룹화 및 집계
+	Groupby  cf. pivot_table
+		그룹화 방법 1 : df.groupby(by = [그룹핑할 열])[함수적용해서 출력할 열들].기초통계함수()
+				[함수적용해서 출력할 열들] 생략시 그룹핑할열을 제외한 모든 열 적용 
+		그룹화 방법 2 : df.pivot_table(index = [그룹핑할 열],
+					 values = [함수적용해서 출력할 열들],
+					 aggfunc = 함수 (기본값 : mean))
+		다중열로 그룹화 : 다중열로 그룹화하기 위해 데이터 컬럼 추가 (num 필드)
+			ex. iris['num'] = np.ravel([[i] * 25 for i in range(6)])
+			각열의 임의의 데이터에 결측치를 할당  ex. iris.iloc[0, 0] = np.nan
+	레이블 인코딩
+		레이블 인코딩을 지원하는 클래스 : from sklearn.preprocessing import LabelEncoder
+
+10절 데이터 구조 변경
+	판다스 공식 문서의 melt : https://pandas.pydata.org/docs/user_guide/reshaping.html#reshaping-by-melt
+	Tidy Data (7page) : https://vita.had.co.nz/papers/tidy-data.pdf
+	melt를 이용한 언피벗팅(와이드포멧 → 롱포멧)
+		ex. airquality.melt(id_vars = ['Month', 'Day'],
+                             	          var_name = '변수명',    기본값 : variable
+                             	          value_name = '값')       기본값 : value
+	pivot_table을 이용한 피벗팅(롱포맷→와이드포맷)
+		 ex. air_melted.pivot_table(index = ['Month', 'Day'],
+                                     	         columns = '변수명',
+                                     	         values = '값')
+
+11절 데이터프레임(시리즈)에 함수적용시키기
+	apply(func, axis) : 축요소별(요소별) 함수 적용 (데이터프레임이나 시리즈에서 가능)
+		ex. new_df['연도월'].apply(lambda year : int(year.split('년')[0]))
+	applymap(func) : 각 요소별 함수 적용 (데이터프레임에서만 가능)
+		ex. X.applymap(np.round)
+	map(func) : 각 요소별 함수 적용 (1차원 리스트, 시리즈에서만 가능)
+		ex. new_df['연도월'].map(lambda month : int(month.split('년')[1][:-1]))

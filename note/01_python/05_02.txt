@@ -1,0 +1,83 @@
+12장 데이터 시각화
+	시각화 라이브러리 : matplotlib, seaborn(데이터시각화), folium(지도시각화)
+	matplotlib : 파이썬에서 가장 쉽게 많이 사용하는 시각화 라이브러리. 판다스 내부에 포함
+	seaborn : matplotlib기반으로 다양한 색, 테마, 챠트 기능과 groupby 기능 포함된 라이브러리
+
+1절 Matplotlib
+	패키지 import 및 기본 설정
+		import matplotlib.pyplot as plt
+		import seaborn as sns
+
+		선명도 : %config InlineBackend.figure_format = 'retina'
+		한글 설정 : 
+			plt.rc('font', family = 'Malgun Gothic')  # windows
+			plt.rc('axes', unicode_minus = False)  # 축의 - 부분 깨짐 방지
+			plt.rc('font', family = 'AppleGothic')  #Mac
+			plt.rcParams['font'.family] = 'Malgun Gothic'  # Mac
+		warning(경고) 안보이게 : 
+	그래프 그리기
+		matplotlib으로 그래프 그리기 위한 단계
+			1. 데이터 준비
+			2. 그래프 생성
+			3. 그래프 함수로 그리기
+			4. 그래프 커스터마이징
+			5. 그래프 출력 및 저장
+	그래프 영역 나누기
+		1) subplot() 함수로 서브플롯 추가
+		2) subplots() 함수로 서브플롯 추가
+		3) pandas.DataFrame.plot()
+			plt.plot(x, y, fmt)
+			df.plot(x = 열이름, y = 열이름, kind = 'line', figsize, title, xlim, ylim, ...)
+				kind : line(기본값), scatter(점도표), bar, barh, box, pie, density, ...
+				xlim, ylim : list / tuple
+	다양한 그래프 그리기
+		plt.scatter() : 산점도
+		boxplot (단점 : 분포를 알 수 없음), violinplot()
+		bar(), barh(), axvline(수직선), axhline(수평선)
+		hist (도수분포표; histogram)
+	그래프 커스터마이징
+		linestyle, linewidth, color, marker, ... (plot의 매개변수로 지정)
+		text(), annotate()
+		개별 폰트 설정을 위한 방법 : 
+			from matplotlib.font_manager import FontProperties
+			font_path = '폰트 저장 위치/폰트명.ttf'
+			font_prop = FontProperties(fname = font_path, size = n)
+		수학기호 ex. plt.text(1.75, 0.3, r'$\sum_{i = 0}^\infty x_i$', fontsize = 30)
+		축과 눈금
+			서브플롯끼리 여백 조정 (hspace : 위아래 여백, wspace : 좌우 여백)
+			xlim, ylim : x축 눈금의 범위, y축 눈금의 범위
+			xticks, yticks : x축 눈금, y축 눈금
+			xticklabels, yticklabels : x축 눈금 라벨, y축 눈금 라벨
+
+2절 Seaborn
+	패키지 import 및 기본 설정
+		import matplotlib.pyplot as plt
+		import seaborn as sns
+
+		선명도 : %config InlineBackend.figure_format = 'retina'
+		한글 설정 : 
+			plt.rc('font', family = 'Malgun Gothic')  # windows
+			plt.rc('axes', unicode_minus = False)  # 축의 - 부분 깨짐 방지
+			plt.rc('font', family = 'AppleGothic')  #Mac
+			plt.rcParams['font'.family] = 'Malgun Gothic'  # Mac
+		warning(경고) 안보이게 : 
+	Seaborn으로 그래프를 그리기 위한 단계
+		1. 데이터 준비  ex. sns.load_dataset('iris', 'titanic')
+		2. 미적속성 설정 (style, context, palette, figsize..) (할때마다 한글 설정을 다시)
+			그래프 style 설정
+			컨텍스트 지정 (비율)
+			컬러 팔레트
+		3. 함수를 이용하여 그래프 그리기 (수치형, 변주형, 쌍관계, 밀도, 회귀, 다중그래프)
+			관계형 그래프 : x축이 수치형 데이터  ex. scatterplot, lineplot → relpot(서브플롯)
+			범주형 그래프 : x축이 범주형 데이터
+				ex. stripplot(무작위 흩뿌림), swarmplot(겹치지 않는 산점도)
+     				     barplot, barhplot(y의 평균으로 막대그래프), pointplot(y의 평균으로 line)
+				     countplot(y값이 없어 x의 빈도수가 높이)
+				     boxplot, violineplot, boxenplot
+				     → catplot(서브플롯)
+			쌍관계 그래프 : 모든 수치형 변수에 대해 산점도
+				ex. pairplot : 데이터프레임에 포함된 모든 수치형 변수 쌍에 대해 산점도(scatter)와 히스토그램
+			밀도 그래프   ex. histplot, displot
+			회귀 그래프  ex. regplot (hue 사용 불가) → lmplot(서브플롯)
+			다중 그래프를 위한 FacetGrid
+		4. 그래프 출력(show) 및 저장(savefig)

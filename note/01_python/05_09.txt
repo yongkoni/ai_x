@@ -1,0 +1,60 @@
+14장 포트폴리오 : 상가정보분석 사례연구
+
+9. 경도와 위도 컬럼을 이용하여 산점도
+	① X축에는 경도, y축에는 위도 컬럼을 산점도로 시각화
+	② 경도와 위도의 산점도를 “시도명” 컬럼별로 서브플롯으로 시각화
+	③ 위의 1번에서 시각화된 산점도를 바탕으로 회귀선을 그린다
+	④ 위의 2번에서 시각화된 산점도를 바탕으로 회귀선을 서브 플롯으로 그린다
+
+10. 상권업종대분류명별 상호명의 개수를 도출하고 시각화하기
+
+11. 상권업종대분류명이 음식인 서브셋을 이용한 분석
+	① “상권업종대분류명”이 음식인 서브셋을 변수 df_food에 할당하고 확인
+	② “상권업종대분류명”이 음식이면서, "시군구명”이 강남구 데이터만 가져와 
+	    “상권업종중분류명”별로 빈도수를 구함(loc함수를 이용 vs loc함수 이용안함)
+
+12. df 데이터셋에서 “상권업종대분류명”이 음식인 데이터 중 서울특별시 데이터 서브셋
+	① “상권업종대분류명”이 음식인 서브셋 중 서울특별시 데이터만 변수 df_seoul_food에 할당하고 확인
+	② df_seoul_food 데이터 셋을 시군구명, 상권업종중분류명으로 그룹화하여 상점수를 count한 내용을 food_gu 변수에 할당
+	③ food_gu 변수를 다음과 같은 스타일의 표로 출력(food_gu 이용)
+	④ 위 3번 스타일의 표를 pivot_table함수를 이용하여 출력
+	⑤ 3번의 결과 중 강남구 데이터만 뽑아 barplot으로 시각화(판다스 plot이용)
+	⑥ 3번 food_gu를 seaborn을 이용하여 구별 음식점 상호 개수를 시각화
+	⑦ 상권업종중분류명별 음식점 상호갯수
+	⑧ Seaborn의 catplot을 이용하여 상권업종중분류별 음식점을 구별로 상권업종중분류명별 bar차트를 서브플롯으로 시각화
+	⑨ Seaborn의 catplot을 이용하여 구별 음식점을 상권업종중분류명별로 서브 플롯으로 시각화
+
+13. 구별로 학원수 비교 : 서울 대치동이나 목동에 사교육이 발달되었다는 가설을 뒷받침할 수 있는 분석
+	① 서울시 교육(상권업종대분류명 이용) 데이터를 df_academy 변수에 할당하고 확인
+	② df_academy 데이터 셋을 상호명별로 빈도수 출력(value_counts()함수 이용하거나 groupby이용)
+	③ df_academy 데이터 셋을 상호명별로 빈도수 상위 10개 출력
+	④ df_academy 데이터 셋을 시군구명 별로 빈도수 출력(학원이 가장 많은 구부터 출력)
+	⑤ df_academy 데이터 셋에서 어떤 종류의 학원들이 많은지 상위 10개만 academy_count변수에 할당하고 출력(상권업종소분류명 컬럼 이용)
+	⑥ df_academy 데이터셋에서 상권업종소분류명별로 빈도수를 구했을 때 빈도가 1000이상인 데이터만 따로 academy_count_1000변수에 할당
+	⑦ df_academy 데이터셋을 “시군구명”, "상권업종소분류명” 별 상호명 빈도수를 academy_group 변수에 할당 출력
+	⑧ academy_group 데이터셋에서 강남구 데이터만 출력 및 시각화(barplot)
+	⑨ df_academy데이터 중 “법정동명”컬럼이 “대치동”과 “목동”인 데이터만 가져와 상권업종소분류명별 빈도수 출력
+	⑩ “상권업종소분류명”별 "시군구명” 별 상호명 빈도수를 g변수에 할당하고 출력
+	⑪ g변수의 내용중 "상권업종소분류명” 컬럼이 “입시·교과학원”데이터만 시각화(pandas의 plot.bar, pandas의 barh, seaborn의 barplot)
+
+14. 서울시 데이터만 경도와 위도를 산점도로 시각화
+	① df_academy 데이터셋의 경도와 위도를 “시군명”별로 색상을 다르게 scatterplot으로 시각화
+	② df_academy 데이터셋의 경도와 위도를 “상권업종소분류명”별로 색상을 다르게 scatterplot으로 시각화
+	③ df_academy 데이터셋 중 “입시·교과학원” 데이터만, 경도와 위도를 “시군구명”별로 색상을 다르게 scatterplot으로 시각화
+	④ df_academy 데이터셋 중 “태권도/무술학원” 데이터만, 경도와 위도를 “시군명”별로 색상을 다르게 scatterplot으로 시각화
+	⑤ df_academy 데이터셋 중 “입시·교과학원” 데이터와 “태권도/무술학원” 데이터만, 경도와 위도를 “상권업종소분류명”별로 색상을 다르게 scatterplot으로 시각화
+
+15. 지도 시각화
+	아나콘다 프롬프트 pip install folium
+	docs : https://python-visualization.github.io/folium/latest/getting_started.html?utm_source=chatgpt.com
+	Quickstart : https://python-visualization.github.io/folium/version-v0.9.1/quickstart.html?utm_source=chatgpt.com
+	지도설정 : folium.Map(location = (위도, 경도),
+               		    width = 너비,
+               		    height = 높이,
+               		    zoom_start = 확대 크기
+              	  	   )
+	지도 객체에 마킹 : folium.마킹 아이콘(radius = 반경 크기,
+        				           location = [위도, 경도],
+        				           tooltip = 설명,
+        				           color = 색
+				           ).add_to(지도 변수)

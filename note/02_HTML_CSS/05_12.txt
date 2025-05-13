@@ -8,16 +8,16 @@ HTML_CSS
 2장 HTML – I
 
 0절 기본태그 : 태그이름, 속성, 속성값 <열린태그></열린태그> 
-	(1) <!DOCTYPE html> : HTML5 문서임을 인식하게 해줌
-	(2) <html  lang=”ko”> : lang 속성을 입력할 수 있음
-	(3) <head>  …  </head> : 문서의 정보인 title이나 설정값들인 css, javaScript등의 환경설정에 관한 정보를 넣음
+	<!DOCTYPE html> : HTML5 문서임을 인식하게 해줌
+	<html  lang=”ko”> : lang 속성을 입력할 수 있음
+	<head>  …  </head> : 문서의 정보인 title이나 설정값들인 css, javaScript등의 환경설정에 관한 정보를 넣음
 		meta : 웹 페이지에 추가 정보를 전달
 		title : 엡 페이지의 제목
 		script : 웹 페이지에 스크립트를 추가
 		link : 웹 페이지에 다른 파일을 추가
 		style : 웹 페이지의 스타일시트를 추가
-	(4) <body>  …  </body> : 사용자에게 보이는 웹 문서 실제 정보
-	(5) </html>
+	<body>  …  </body> : 사용자에게 보이는 웹 문서 실제 정보
+	</html>
 
 1절 글자에 관련된 태그 : H1(제목), p(본문), br(개행), a(앵커), b, i, sup, del 태그
 	h1(제목) ~ h6 : 해더를 의미하는 태그
@@ -44,3 +44,9 @@ HTML_CSS
 	tbody : 표의 본문 (선택)
 	tfoot : 표의 하단 (선택)
 	tr:hover : 표에 마우스커서 올라갈 때 스타일 적용
+
+4절 이미지를 출력하는 태그 : img
+	src : 이미지의 경로 지정
+	alt : 이미지가 없을 때 나오는 글자 지정
+	width : 이미지의 너비 지정 (css 부분에 설정해주는 경우가 더 많음)
+	height : 이미지의 높이 지정 (css 부분에 설정해주는 경우가 더 많음)

@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #wrap{
+            width:600px; margin:0 auto; /* wrap을 가운데 정렬 */
+            border:1px solid #999999;
+        }
+        #wrap > #header{ /* > : 자손 선택자 */
+            overflow:hidden; /* 수평으로 하고 싶은 태그부모단 */
+        }
+        #wrap .logo { /* space : 후손 선택자 */
+            float:left;
+            padding:10px 30px 10px 150px;
+        }
+        #wrap .title {
+            float:left;
+            padding:20px 150px 10px 30px;
+        }
+        div p{ /* 후손 선택자(자손 선택자 포함) */
+            font-size:24px;
+        }
+        div > p{ /* 자손 선택자 */
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="header">
+            <div class="logo"><h1>LOGO</h1></div>
+            <div class="title"><h2>00주식회사</h2></div>
+        </div>
+        <div id="content">
+            <p>
+                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
+            </p>
+            <ul>
+                <li><p>여기 content밑에 ul밑에 li밑에</p></li>
+                <li><p>여기 content밑에 ul밑에 li밑에</p></li>
+                <li><p>여기 content밑에 ul밑에 li밑에</p></li>
+            </ul>
+        </div>
+        <div id="footer"></div>
+        <p>주소</p>
+    </div>
+</body>
+</html>

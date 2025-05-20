@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <title></title>
+    <style>
+        p {text-align: center;}
+    </style>
+    <script>
+        function messageOut(){
+            if(!frm.fir.value){
+                alert('첫번째 수를 입력하시오');
+                frm.fir.focus()
+                return false;
+            }
+            else if(!frm.sec.value){
+                alert('두번째 수를 입력하시오');
+                frm.sec.focus()
+                return false;
+            }
+            let first = Number(frm.fir.value);
+            let second = Number(frm.sec.value);
+            let temp = first > second ? first - second : second - first;
+            let bodyMessage;
+            if(first > second){
+                bodyMessage = '<p>첫번째 수가 ' + temp + '만큼 큽니다</p>';
+            }
+            else if(second > first){
+                bodyMessage = '<p>두번째 수가 ' + temp + '만큼 큽니다</p>';
+            }
+            else{
+                bodyMessage = '<p>두 수가 같습니다</p>'
+            }
+            alertMessage = bodyMessage.replace('<p>', '').replace('</p>', '');
+            document.body.innerHTML += bodyMessage;
+            frm.fir.value = first;
+            frm.sec.value =second;
+            alert(alertMessage);
+        }
+
+    </script>
+</head>
+<body>
+    <form name="frm" onsubmit="return messageOut()">
+    <fieldset>
+        <p>
+            <label for="fir">첫번째 수</label> :
+            <input type="number" name="fir" id="fir">
+        </p>
+        <p>
+            <label for="sec">두번째 수</label> :
+            <input type="number" name="sec" id="sec">
+        </p>
+        <p><input type="submit" value="결과"></p>
+        </fieldset>
+    </form>
+</body>
+</html>

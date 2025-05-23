@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <title></title>
+    <style>
+        table {width:280px; height: 100px; margin: 10px auto;} h3{text-align:center;}
+    </style>
+    <script>
+        let color = ['red', 'orange', 'yellow', 'green', 'blue', 'navy', 'purple', 'white'];
+        window.onload = () => {
+            let tds = document.querySelectorAll('td');
+            for(let idx = 0; idx < tds.length; idx++){
+                tds[idx].style = 'background-color:' + color[idx];
+            }
+        };
+        const bgColorChange = (i) => {
+            document.body.style.backgroundColor = color[i];
+        };
+    </script>
+</head>
+<body>
+    <h3>quiz1 : 마우스를 올리면 바탕화면도 해당 색상으로</h3>
+    <table>
+        <tr onmouseout="bgColorChange(7)"> <!-- tr에 마우스를 빼면 바탕화면이 하얀색 -->
+            <td onmousemove="bgColorChange(0)"></td>
+            <td onmousemove="bgColorChange(1)"></td>
+            <td onmousemove="bgColorChange(2)"></td>
+            <td onmousemove="bgColorChange(3)"></td>
+            <td onmousemove="bgColorChange(4)"></td>
+            <td onmousemove="bgColorChange(5)"></td>
+            <td onmousemove="bgColorChange(6)"></td>
+        </tr>
+    </table>
+</body>
+</html>

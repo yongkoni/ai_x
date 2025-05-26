@@ -1,0 +1,36 @@
+JavaScript
+
+10장 문서 객체 모델
+
+6. 문서 객체 제거 : removeChild(child)
+
+
+11장 이벤트
+
+1. 이벤트 관련 용어 정리
+	사전적 정의 : 자바 스크립트에서 DOM을 통해 동적인 화면처리를 위해 처리하는 내용
+	마우스 이벤트, 키보드 이벤트, HTML 프레임 이벤트, HTML 입력 양식 이벤트, 유저 인터페이스 이벤트, 구조 변화 이벤트, 터치 이벤트
+	이벤트를 연결 : window 객체의 onload 속성에 함수 자료형을 할당하는 것
+	load : 이벤트 이름, 이벤트 타입
+
+2. 이벤트 연결하는 방법
+	1) 인라인 이벤트 모델 : HTML 태그의 속성으로 직접 자바스크립트 코드를 작성하는 방식
+	2) 기본 이벤트 모델 : 이벤트 속성에 function을 할당
+	3) 표준 이벤트 모델 : addEventListener() 메서드를 사용하는 방식
+
+3. 이벤트 강제 실행
+	기존 이벤트 모델 : 핸들러 함수 직접 호출, .click(), .focus() 등 DOM 요소 내장 메서드 사용
+	표준 이벤트 모델 : .dispatchEvent() 사용, .click(), .focus() 등 DOM 요소 내장 메서드 사용
+
+4. 이벤트 제거
+	기존 이벤트 모델 : 핸들러함수 = null
+	표준 이벤트 모델 : .removeEventListener() 사용
+
+5. 이벤트 제한
+	기본 이벤트 모델 : return false
+	표준 이벤트 모델 : .preventDefaylt() 사용
+
+6. event.keyCode
+	event.keyCode(입력된 키 아스키코드)
+	event.offsetX와 event.offsetY(클릭한 곳의 브라우저 기준 좌표)
+	event.screenX와 event.screenY(클릭한 곳의 screen좌표)

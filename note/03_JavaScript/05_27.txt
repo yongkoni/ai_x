@@ -1,0 +1,30 @@
+JavaScript
+
+12장 jQuery
+
+1. $(선택자).함수(); 
+	val(내용)-value내용을 입력, val()-value를 return
+	html(내용)-innerHTML을 내용으로 입력, html()-innerHTML을 return
+	text(내용)-태그안의 text내용 입력, text()-태그 안의 text가 return
+
+2. keyup 함수
+	키에서 손을 떼는 순간 발생
+	키의 최종 상태를 처리하거나 실행 취소 동작을 구현할 때 유용
+
+3. aJax 함수 : $.get(), $.post(), $.ajax() 
+                $.get(요청경로(xx?id=aa), callback(data, status){
+                    data : 요청경로를 수행한 결과
+                    status : success / fail
+                });
+                $.post(요청경로(xx), 요청파라미터값의 객체({id:'aa'}), callback);
+                $.ajax({
+                    *url : '요청경로(xx?id=aa / xx)',
+                    type : 'get'이나 'post',
+                    data : 요청파라미터와 값 'id=aa'이나 {id:'aa'},
+                    dataType : 'html' / 'json' 요청한 경로로 실행한 결과의 타입,
+                    *success : 요청경로 성공시 수행할 콜백함수,
+                    error : 요청경로 실패시 수행할 콜백함수
+                });
+
+4. fetch 함수 : 비동기 작업의 결과를 약속하는 함수
+	response.ok : 요청경로이 응답이 정상적으로 왔는지 여부

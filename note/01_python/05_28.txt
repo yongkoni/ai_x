@@ -1,0 +1,19 @@
+14장 웹 데이터 수집1 정적 공공 api
+
+1절 BeatifulSoup과 parser
+	pip install bs4 → 아나콘다를 설치하면 7500여개의 패키지 설치
+	공식 사이트 : https://www.crummy.com/software/BeautifulSoup/
+	Docs : https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+	import requests 사용
+	from bs4 import BeautifulSoup 사용
+	.select_one
+	.select
+	.find
+	.find_all
+
+2절 정적 웹 데이터 수집 (정적 웹크롤링)
+	JSON 파일 - request모듈(get), urllib.request모듈(urlopen)
+	html 파일
+		방법 1 : import requests, from bs4 import BeautifulSoup 사용
+		방법 2 : from urllib.request import urlopen
+		user-agent 추가하여 크롤링

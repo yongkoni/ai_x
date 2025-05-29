@@ -1,0 +1,12 @@
+14장 웹 데이터 수집1 정적 공공 api
+
+2절 정적 웹 데이터 수집 (정적 웹크롤링)
+	JSON 파일 - request모듈(get), urllib.request모듈(urlopen)
+	html 파일
+		방법 1 : import requests, from bs4 import BeautifulSoup 사용
+		방법 2 : from urllib.request import urlopen
+		user-agent 추가하여 크롤링
+		open API 사용 안하는 방법
+		open API 사용하는 방법
+	xml 파일 - BeautifulSoup(url변수명, "xml")
+		방법은 html과 동일 

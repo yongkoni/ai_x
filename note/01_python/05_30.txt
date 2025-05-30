@@ -1,0 +1,6 @@
+14장 웹 데이터 수집2 동적
+
+3절 동적 웹 데이터 수집
+	pip install selenium
+	Docs : https://www.selenium.dev/documentation/
+	https://selenium-python.readthedocs.io/

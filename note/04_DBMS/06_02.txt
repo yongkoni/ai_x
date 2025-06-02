@@ -1,0 +1,69 @@
+Oracle
+
+1. 실습전 할 일
+	1) Oracle setup후, cmd창을 띄워 다음을 실행
+	2) system계정 접속 후, scott 계정 생성, 권한 부여
+	    C:\~>sqlplus system/비번
+	            sqlplus "/as sysdba
+	    SQL>create user scott identified by tiger;
+	    SQL>grant dba to scott;
+	    SQL>exit;
+	3) scott 계정 접속 후, 데이터 확인
+	    C:\~>sqlplus scott/tiger
+	    SQL>SELECT * FROM TAB; -- 소유 테이블 확인
+	4) 수업에 쓸 데이터 넣기
+	    SQL>@D:/ai_x/lecNote/04_DBMS/demo.sql;
+	5) scott계정 접속 후, 데이터 확인
+	    C:\~>sqlplus scott/tiger
+	    SQL>SELECT * FROM TAB; 
+	    SQL>SELECT * FROM DEPT;
+	    SQL>EXIT
+
+2. SELECT
+	SELECT [DISTINCT] {*, column [Alias], ….}
+	FROM 데이블명
+	[WHERE condition]
+	[ORDER BY {column, expression} [ASC|DESC]] ;  ASC : 오름차순 / DESC : 내림차순
+
+	SELECT : 원하는 컬럼 선택
+	* : 테이블의 모든 column 출력
+	alias : 해당 column에 대한 다른 이름 부여
+	DISTINCT : 중복 행 제거 옵션
+	FROM  : 원하는 데이터가 저장된 테이블 명을 기술
+	WHERE : 조회되는 행을 제한하기 위한 조건 추가
+	condition : column, 표현식, 상수 및 비교연산자
+	ORDER BY : 정렬을 위한 옵션 (ASC : 오름차순이며 default, DECS 내림차순)
+	
+	SQL문은 대소문자 구별없지만 데이터는 대소문자 구별
+	-- 한 줄 주석 ORACLE 명령어일 경우 옆에 주석 불가 밑에 주석 가능
+	/* 여러 줄 주석 */
+
+3. 날짜 표기법 세팅 (현재 : YY/MM/DD 또는 RR/MM/DD)
+	ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD';
+	ALTER SESSION SET NLS_DATE_FORMAT = 'RR/MM/DD';
+
+4. 비교연산자 : 같다(=), 다르다(!=, ^=, <>), >, >=,<, <=
+
+5. 논리연산자 : AND, OR, NOT
+
+6. 산술연산자 (SELECT절, 조건절, ORDER BY절)
+	NVL(NULL일수도 있는 필드명, NULL을 대체할 값)
+	TO_CHAR(TYPE을 변경할 필드명)
+
+7. 연결연산자(||) : 필드값이나 문자를 연결
+
+8. 중복제거(DISTINCT) : DISTINCT를 사용하여 나타나는 결과는 기본적으로 오름차순 정렬
+
+9. SQL 연산자
+	BETWEEN A AND B : A부터 B까지 (A와 B 포함 ※ A가 작은 값이여야 함)
+	IN (list) : list의 값 중 어느 하나와 일치
+	필드 LIKE 패턴 : %(0글자 이상), _(1글자)를 포함한 패턴
+	필드 IS NULL (해당 필드가 NULL인지 여부)
+
+10. 정렬 (오름차순, 내림차순) : ORDER BY절
+	[ORDER BY {column, expression} [ASC|DESC]] ;  ASC : 오름차순 (기본값) / DESC : 내림차순
+
+11. 형변환 함수 : TO_CHAR, TO_DATE
+	날짜형(HIREDATE)을 문자형으로 변환 : TO_CHAR(날짜형 데이터, 패턴)
+    		YYYY, YY, RR : 년도 / MM : 월 / DD : 일 / DY, DAY : 요일
+    		HH24, HH12, HH : 시 / AM이나 PM / MI : 분 / SS : 초

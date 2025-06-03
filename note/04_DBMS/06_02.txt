@@ -1,5 +1,7 @@
 Oracle
 
+2장 Select문
+
 1. 실습전 할 일
 	1) Oracle setup후, cmd창을 띄워 다음을 실행
 	2) system계정 접속 후, scott 계정 생성, 권한 부여

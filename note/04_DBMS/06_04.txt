@@ -1,0 +1,51 @@
+Oracle
+
+4장 DDL, DML, DCL
+
+DML : 데이터 검색, 수정 등
+
+1. INSERT INTO 테이블명 (필드명1, 필드명2, ... ) VALUES (값1, 값2, ... ); 
+	: 데이터베이스 객체에 데이터를 입력
+2. UPDATE 테이블명 SET 필드명1=값1[, 필드명2=값2, ...필드명N=값N] [WHERE 조건];
+	: 테이블에 저장된 데이터를 수정
+3. DELETE FROM 테이블명 [WHERE 조건];
+	: 테이블의 지정된 조건행을 삭제
+
+
+DCL : 데이터베이스 사용자의 권한 제어
+
+1. CREATE USER : 사용자 생성
+2. GRANT : 데이터 베이스 객체에 권한 부여
+3. REVOKE : 이미 부여된 데이터베이스 객체의 권한을 취소
+4. COMMIT : 트랜잭션 확정
+5. ROLLBACK : 트랜잭션 취소
+6. DROP USER : 사용자 제거
+
+
+제약조건 : INSERT, UPDATE할 때, 제약조건에 맞는 데이터만 INSERT, UPDATE됨
+
+1. PRIMARY KEY : 테이블의 각 행을 유일한 값으로 식별하기 위한 필드
+2. FOREIGN KEY : 테이블의 열이 다른 테이블의 열을 참조
+3. NOT NULL : NULL을 포함하지 않는 필드
+4. UNIQUE : 모든 행의 값이 유일한 값. NULL은 허용(NULL은 여러개 입력 가능)
+5. CHECK(조건) : 해당 조건이 만족(NULL 값 허용)
+6. DEFAULT 기본값 : 해당 열의 데이터를 입력하지 않으면 원래는 NULL이 들어갈 것을 기본값이 들어가도록
+
+
+5장 Sequence : 순차적인 번호 생성기. 대부분 인위적인 PK 사용용도
+
+1. SEQUENCE 생성 : 
+	CREATE SEQUENCE 시퀀스명
+		START WITH N : N부터 시작 (기본값 : 1)
+		INCREMENT BY N : N씩 증가 (기본값 : 1)
+		MAXVALUE 9999 : 최대값
+		MINVALUE 1 : 최소값
+		CYCLE : 순차번호 9999 → 1 / NOCYCLE : 순차없음
+		CACHE N : 메모리에 올리는 N만큼의 시퀀스 값을 올림 (기본값 : 20)
+		NOCACHE : 메모리 상에서 시퀀스를 관리하지 않음
+2. SEQUENCE 삭제 : DROP SEQUENCE 시퀀스명
+3. 시퀀스 수정 : ALTER SEQUENCE 시퀀스명 
+		INCREAMENT BY N
+		START WITH N
+		MAXVALUE N
+		MINVALUE N;

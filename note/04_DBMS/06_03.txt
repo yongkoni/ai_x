@@ -26,12 +26,26 @@ Oracle
 
 4장 DDL, DML, DCL
 
-DDL : 테이블생성 CREATE TABLE, 테이블구조변경 ALTER TABLE, 테이블 삭제 DROP TABLE
+DDL : 데이터와 그 구조를 정의
 
 1. 테이블 생성(CREATE TABLE 테이블명 ... ) : 테이블 구조를 정의
-
 2. 테이블 삭제(DROP TABLE 테이블명)
+3. 데이터형의 종류
+	CHAR(size) : 고정 길이 문자 데이터
+		    VARCHAR2와 동일한 형태의 자료를 저장 가능
+		    입력된 자료의 길이와는 상관없이 정해진 길이만큼 저장 영역을 차지
+		    최소 크기는 1
+	VARCHAR2(size) : Up to 4000 Bytes 가변 길이 문자 데이터
+		          실제 입력된 문자열의 길이만큼 저장 영역을 차지
+		          최대 크기는 명시해야 하며, 최소 크기는 1
+	NUMBER : Internal Number Format 최고 40자리까지의 숫자를 저장 가능
+		  이때 소수점이나 부호는 길이에 포함되지 않음
+	NUMBER(w) : w자리까지의 수치로 최대 38자리까지 가능 (38자리가 유효 숫자)
+	NUMBER(w, d) : w는 전체 길이, d는 소수점 이하 자릿수이며 소수점은 자릿수에 포함되지 않음
+	DATE : BC 4712년 1월 1일 ~ AD 4712년 12월 31일까지의 날짜
+	LOB : 2GB까지의 가변 길이 바이너리 데이터를 저장 가능하며 이미지 문서, 실행 파일을 저장 가능
 
-DML : INSERT, SELECT, UPDATE, DELETE - DML은 취소 가능
+
+DML : 데이터 검색, 수정 등
 
 1. INSERT INTO 테이블명 (필드명1, 필드명2, ... ) VALUES (값1, 값2, ... ) : 데이터베이스 객체에 데이터를 입력

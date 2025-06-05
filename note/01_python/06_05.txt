@@ -1,0 +1,26 @@
+15장 데이터베이스 연동
+
+1절 SQLite 데이터베이스 연동
+	SQLite 데이터베이스는 별도의 DBMS없이 SQL을 이용하여 DB 엑세스 가능한 디스크 기반 DB
+	SQLite는 프로토타입 용도
+
+	1) SQLite 패키지 load : import sqlite3 import pandas as pd
+	2) 데이터 베이스 연결 : sqlite3.connect('연결할 db')
+		cursor() : 커서 객체를 생성
+		commit() : 현재 트랜잭션을 커밋 (변경사항 적용)
+		rollback() : 변경 사항 취소
+		close() : 데이터베이스 연결 닫힘
+		execute : SQL문을 실행
+		fetchone() : 결과를 한행씩 받을 때 (튜플)
+		fetchall() : 결과를 모두 받을 때 (튜플 list)
+		fetchmany(n) : 결과를 n행 받을 때 (튜플 list)
+		description : header 내용을 포함한 내용들 (list)
+		rowcount : INSERT, UPDATE, DELETE 전송
+	3) SQL구문에 파라미터 사용하기
+		qmark (DB에 따라 불가한 경우 있음) : 매개변수를 포함해야 할 값에 물음표(?)로 표시 후 ?에 전달할 값 지정
+		named (추천) : 매개변수를 포함해야 할 값에 콜론(:)과 값을 받을 이름을 표시 한 후 딕셔너리를 이용해 이름에 값을 전달
+
+2절 오라클 데이터베이스 연결 : import cx_Oracle
+	conn 얻어오는 방법 1 : conn = cx_Oracle.connect('scott', 'tiger', 'localhost:1521/xe')
+	conn 얻어오는 방법 2 : oracle_dsn = cx_Oracle.makedsn(host = 'localhost', port = 1521, sid = 'xe')
+			     conn = cx_Oracle.connect('scott', 'tiger', dsn = oracle_dsn)

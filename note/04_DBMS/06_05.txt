@@ -1,0 +1,41 @@
+MySQL
+
+1. MySQL : SQL에 기반을 둔 관계형 DBMS 중 하나로 Oracle과 비슷
+	DCL (계정생성, 권한부여, 권한박탈, 계정삭제, 트랜잭션 명령어)
+	DDL (테이블생성, 테이블 삭제, 제약조건, 시퀀스없음, 타입)
+	DML (INSERT, UPDATE, DELETE, SELECT)
+		OUTER JOIN, AND(&&), OR(||), CONCAT함수를 이용하여 연결연산자 대치
+
+2. DCL
+	create user 유저명 identified by '패스워드'; : 계정 생성
+	grant all privileges on *.* to 유저명; : dba 권한 부여
+	revoke all privileges on *.* from 유저명; : dba 권한 박탈
+	drop user 유저명; : 계정 삭제
+
+3. DDL
+	MySQL 타입 : nemeric(n, d), varchar(n), date
+	정수 : tinyint(1byte), smallint(2byte), mediumint(3byte), int/integer(4byte), bigint(8byte)
+	실수 : float(n, d;4byte), double(n,d;8byte)
+	문자 : char(n), text, mediumtext(16MB), longtext(4GB)
+	날짜 : date, datetime, time, year, timestamp
+
+4.  DDL이나 DML명령어는 데이터베이스 내에서 실행
+	show databases; : 데이테베이스 list
+	create database devdb; : 데이터베이스 생성
+	use devdb; : devdb(특정데이터베이스)로 들어감
+	select database(); : 현재 들어와 있는 데이터베이스
+	drop table 테이블명; : 테이블명 삭제
+	drop table if exists 테이블명; : 테이블명이 존재할 경우 삭제
+	MySQL에서는 시퀀스가 없음
+
+
+5. 컬럼함수 – 오라클 함수와 다소 다른 점
+	||은 OR의 의미이지 연결연산자가 아니므로 concat 사용
+	select sysdate(); : 현재 시점
+	date_format(날짜/시간, 포맷) → 날짜형을 문자로
+	date_format(문자, 포맷) → 문자형을 날짜형으로
+		%Y(년도4자리) %y(년도2자리) %m(월01,02,..) %c(1,2,..)
+		%d(일01,02,.) %e(1,2,..) %H(24시간) %h(12시간) %p(오전,오후) %i(분) %s(초)
+	if() 사용가능
+	ifnull(null이 있는 필드명, 대체할 내용), if(null이 있는 필드명 is null,  대체할 내용) : NVL() 역할
+	outer join은 left outer join 또는 right outer join 사용하고 where 대신 on 사용

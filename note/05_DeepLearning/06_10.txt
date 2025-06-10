@@ -1,0 +1,43 @@
+DeepLearning
+
+군집화(비지도학습)
+
+1. for문을 이용한 전체코드 :
+	data 생성
+	랜덤포인트2지점
+	for문
+		랜덤포인트 2지점기준으로 group1과 group2
+		랜던포인트 이용(group1중간점, group2중간점)
+2. api(sklearn)를 이용한 군집화
+	sklearn 머신러닝
+		예측모델; 분류, 회귀, 군집분석 fit(학습), predict(예측)
+		변환모델; 전처리 ex. 스케일조정 fit(학습), transform(변환함수)
+
+
+tensorflow v1 feat.스케일조정
+
+tensorflow
+	데이터 흐름 그래프(tensor객체의 흐름)
+	이 그래프는 node(상수, 변수, 연산)와 edge로 구성
+	sess = tf.Session()으로 실행
+	sess.run()을 통해 값을 확인
+
+1. tensorflow v2.xx에서 v1 사용하기
+2. tensorflow v1을 이용한 linear regression을 구현
+	입력(독립)변수 x가 1개, 타겟(종속)변수 y가 1개
+	predict를 위한 placeholder이용
+		placeholder : 텐서플로우 외부에서 데이터를 입력받는 노드
+	scale이 다른 데이터의 linear regression 구현 (scale 조정 X)
+	scale이 다른 데이터의 linear regression을 구현(조정O)
+		normalization(정규화) : 0~1로 조정 
+                    			X - Xmin 
+    		normalization = ────────
+                    			Xmax - Xmin 
+		* 위의 식을 써도 되지만 라이브러리를 씀(sklearn.preprocessing.MinMaxScaler이용)
+
+		standardization(표준화) : 평균0, 표준편차1로 조정 
+                        		X - Xmean(평균) 
+    		standardization = ─────────
+                        		Xstd(표준편차) 
+		* 위의 식을 써도 되지만 라이브러리를 씀(sklearn.preprocessing.StandardScaler이용)
+

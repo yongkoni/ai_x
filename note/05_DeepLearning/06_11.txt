@@ -1,0 +1,51 @@
+tensorflow v1 feat.스케일조정
+
+tensorflow
+	데이터 흐름 그래프(tensor객체의 흐름)
+	이 그래프는 node(상수, 변수, 연산)와 edge로 구성
+	sess = tf.Session()으로 실행
+	sess.run()을 통해 값을 확인
+
+1. tensorflow v2.xx에서 v1 사용하기
+
+2. tensorflow v1을 이용한 linear regression을 구현
+	입력(독립)변수 x가 1개, 타겟(종속)변수 y가 1개
+	predict를 위한 placeholder이용
+		placeholder : 텐서플로우 외부에서 데이터를 입력받는 노드
+	scale이 다른 데이터의 linear regression 구현 (scale 조정 X)
+	scale이 다른 데이터의 linear regression을 구현(조정O)
+		normalization(정규화) : 0~1로 조정 
+                    			X - Xmin 
+    		normalization = ────────
+                    			Xmax - Xmin 
+		* 위의 식을 써도 되지만 라이브러리를 씀(sklearn.preprocessing.MinMaxScaler이용)
+
+		standardization(표준화) : 평균0, 표준편차1로 조정 
+                        		X - Xmean(평균) 
+    		standardization = ─────────
+                        		Xstd(표준편차) 
+		* 위의 식을 써도 되지만 라이브러리를 씀(sklearn.preprocessing.StandardScaler이용)
+	입력(독립)변수 x가 3개, 타겟(종속)변수 y가 1개 (csv → array)
+		방법 1 : csv → array (결측치, header가 없어야 함)
+		방법 2 : csv파일 → 데이터프레임 → 결측치 처리 → 넘파이배열 → 머신러닝
+			1) csv를 데이터프레임으로 읽기
+			2) 결측치 처리
+				방법 1 : 결측치가 있는 행을 제거
+				방법 2 : 결측치 대체 (열별 평균값으로 대체)
+				방법 3 : 결측치 대체 (월별 열별 평균값으로 대체)
+
+		스케일 조정
+   	 		MinMaxScaler 	    StandardScaler
+       			      0 ~ 1                     -2 ~ 2 (주로 0 근처)
+
+3. 이진분류 = logistic Regression (분류분석)
+	logistic 회귀분석 : 기본의 회귀분석과 다른 처리 필요
+
+4. XOR
+
+5. Deep Learning XOR 예제
+	layer 층 x_data 2개 → 4 → 1
+	layer층 x_data 2개 → 10 → 20 → 10 → 1
+
+6. XOR를 tensorflow v2로 만들기
+	layer층 x_data 2개 → 10 → 20 → 10 → 1

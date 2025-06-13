@@ -1,0 +1,22 @@
+tensorflow
+
+DNN(딥러닝) MNIST(손글씨데이터) 예제
+
+모델(DNN)의 accuracy 늘리기
+	데이터 확보
+	모델 수정 (레이어 추가, units수 증가)
+	과적합 방지 (validation data추가, dropout, 활성화함수 relu계열, tanh)
+	epoch 조정
+	optimizer 변경
+
+from tensorflow.keras.callbacks import Callback, EarlyStopping, ModelCheckpoint
+콜백함수 1 : 로그 출력
+콜백함수 2 : EarlyStopping
+	val_loss값이 늘어나면 지정한 epoch를 다 수행하지 않고 조기 종료
+	val_accuracy값이 감소하면 지정한 epoch를 다 수행하지 않고 조기 종료
+콜백함수 2 : EarlyStopping
+	val_loss값이 늘어나면 지정한 epoch를 다 수행하지 않고 조기 종료
+	val_accuracy값이 감소하면 지정한 epoch를 다 수행하지 않고 조기 종료
+
+wine 품질등급 예측 (다중분류) 예제
+

@@ -14,7 +14,7 @@ NLTK 자연어처리 패키지
 	품사태깅 : from nltk.tag import pos_tag
 
 
-한글 형태소 분석
+한글 형태소 분석 시각화
 
 1. 자연어처리
 	자연어 : 일상적인 언어
@@ -37,6 +37,6 @@ NLTK 자연어처리 패키지
 		Komoran : 자바로 만든 형태소 분석기(JAVA_HOME 시스템환경변수, Path설정)
 		Okt
 	Mecab (pip install python-mecab-ko)
-		MeCab : C++로 만든 형태소 분석기. 저사양환경에서 사용 가능. 다국어 바인딩 지원
+		MeCab : C++로 만든 형태소 분석기. 저사양환경에서 사용 가능하며 다국어 바인딩 지원
 
 

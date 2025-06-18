@@ -1,0 +1,36 @@
+한글 형태소 분석 시각화
+
+3. 한글형태소 분석 엔진(Konlpy,...)
+	공통기능 : morphs(형태소 나누기), nouns(명사추출), pos(형태소로 나누어 품사 태그)
+	Konlpy (pip install konlpy : jpype1 라이브러를 의존)
+		HanNanum : 자바로 만든 형태소 분석기(JAVA_HOME 시스템환경변수, Path설정)
+		Kkma : 자바로 만든 형태소 분석기(JAVA_HOME 시스템환경변수, Path설정)
+		Komoran : 자바로 만든 형태소 분석기(JAVA_HOME 시스템환경변수, Path설정)
+		Twitter (Okt : Open Korean Text)
+	Mecab (pip install python-mecab-ko)
+		MeCab : C++로 만든 형태소 분석기. 저사양환경에서 사용 가능하며 다국어 바인딩 지원
+
+4. 말뭉치
+	영어 말뭉치 : import nltk
+	한글 말뭉치 : from konlpy.corpus import kolaw
+
+5. 워드 클라우드
+	from wordcloud import WordCloud 와
+	from matplotlib import pyplot as plt 사용
+	컬러맵 : https://matplotlib.org/stable/users/explain/colors/colormaps.html
+	wordcloud = WordCloud(
+                font_path = '폰트 경로',
+                width = 생성될 이미지 가로(픽셀),
+                background_color = '배경색',
+                max_words = 표시될 단어의 최대 개수,
+                relative_scaling = 단어 빈도에 따른 크기 차이 조정,
+                colormap = '글씨 컬러맵'
+                random_state = 지정 시 같은 모양의 워드클라우드 생성 (기본값 : None)
+                stopwords = 불용어,
+                mask = 워드클라우드의 모양 지정
+	)
+
+6. 단어의 빈도수 시각화 (nltk.Text)
+
+7. 워드 임베딩
+	단어간 벡터 계산 → 단어간 유사성 도출

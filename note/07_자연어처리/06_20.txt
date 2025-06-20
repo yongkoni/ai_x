@@ -1,0 +1,54 @@
+RNN(Recurrent Neural Network 순환신경망)
+
+1. 문맥을 이용하여 모델만들기
+	from keras_preprocessing.text import Tokenizer
+
+2. 다음 문맥 예측해 보기
+	def sentence_generation(current_word, n) :
+
+
+LSTM(영화평감성분석)
+
+1. 패키지
+	from tensorflow.keras.layers import Embedding, LSTM, Dense
+	from tensorflow.keras.datasets import imdb
+	from tensorflow.keras.preprocessing.sequence import pad_sequences
+	from sklearn.metrics import f1_score, precision_score, recall_score
+
+2. 하이퍼 파리미터 설정
+	MY_WORDS = imdb 데이터의 단어수
+	MY_LENGTH = 영화평 단어수 80개만 독립변수
+	MY_EMBED = Embedding layer의 결과 차원
+	MY_HIDDEN = LSTM의 units 차원
+	MY_EPOCH = 학습 수(fit)
+	MY_BATCH = batch_size(fit시 매번 데이터를 가져오는 데이터)
+
+3. 데이터 불러오기
+	(x_train, y_train), (x_test, y_test) = imdb.load_data(num_words = MY_WORDS)
+
+4. 문자단어 → 정수
+
+5. 숫자영화평 → 자연어 영화평 return 함수
+	def decoding(review_num) :
+
+6. 영화평(입력변수)의 길이
+	def show_length(x_train) :
+
+7. 모든 영화평 길이를 동일하게 (MY_LENGTH = 80)
+	pad_sequences(x_train,
+                       padding = 'post',
+                       truncating = 'post',  (뒷부분을 짜르고 앞부분을 남김)
+                       maxlen = MY_LENGTH)
+
+8. 최종 데이터 shape 확인
+	X_train.shape, y_train.shape, X_test.shape, y_test.shape
+
+9. 모델 생성
+
+10. 학습환경 설정 및 학습하기
+	모델 학습과정 시각화
+
+11. 모델 평가
+	혼동행렬 사용
+
+12. 모델 사용하기

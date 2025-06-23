@@ -1,0 +1,41 @@
+인코더 LSTM과 디코더 LSTM(Sequence to Sequence)으로 번역기 만들기
+	Google Neural Machine Translation(GNMT)
+	RNN기반의 Seq2Seq방식
+	자연어 생성 알고리즘
+
+1. 패키지 import & 하이퍼파라미터
+	하이퍼파라미터 : 모델의 정확도 및 학습속도에 영향을 미치는 변수
+
+2. 번역 데이터 불러오기
+
+3. 영어알파벳과 한글문자 리스트 만들기
+
+4. 문자당 num를 갖는 dict 만들기
+
+5. 인코더 입력, 디코더 입력, 디코더 출력
+	인코더 입력데이터 : 영어알파벳 → 숫자 → 원핫인코딩(110, 4, 171)
+	디코더 입력데이터 : 'S' + 한글문자 → 숫자 → 원핫인코딩(110, 3, 171)
+	디코더 타겟데이터 : 한글문자 + 'E' → 숫자 shape이 (110, 3)인 list
+
+6. 전체 입력데이터, 타겟데이터 준비
+
+7. 모델 구현
+
+8. 학습과정 설정 & 학습
+
+9. 모델사용
+
+
+시계열 분석
+	pip install statsmodels==0.13.5  (주기적인 데이터 트렌드 추이)
+	pip install prophet  (facebook에서 개발한 시계열 예측 라이브러리)
+
+시계열 데이터의 구조를 분해해 주는 도구
+	from statsmodels.tsa.seasonal import seasonal_decompose
+
+seasonal_decompose & RNN/LSTM/GRU & Prophet
+      통계적 분석		예측  	        예측	
+
+Prophet
+	계절성, 추세, 휴일효과 등을 자동으로 모델링
+	from prophet import Prophet

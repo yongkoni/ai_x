@@ -1,0 +1,19 @@
+허깅페이스(Hugging Face)
+
+자연어 처리와 관련된 다양한 기술과 리소스를 제공하는 회사 및 온라인 플랫폼 : https://huggingface.co/
+Transformers라이브러리 내 pipeline()함수
+Inference API : key를 사용
+Transformers 라이브러리
+
+1. 텍스트 기반 감정분석(긍정/부정)
+2. 제로-샷 분류(zero-shot-classification)
+	비지도학습
+3. text 생성
+4. 마스크 채우기
+5. 개체명 인식(NER : Named Entity REcognition)
+6. 질의 응답
+7. 문서요약
+	현재 torch 2.6이상 추천
+8. 번역
+9. 이미지를 설명하는 텍스트 생성
+10. 이미지분류

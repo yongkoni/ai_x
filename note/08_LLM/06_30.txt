@@ -1,0 +1,61 @@
+OpenAI Assistants API
+
+1. OpenAI Assistants API 소개
+	대화 지속성 & 메모리
+	다양한 도구 통합
+	개인화된 지시어
+	모델 기능 향상
+	개발 편의
+
+2. API 키 설정 및 환경 변수 사용
+
+3. 기본적인 Assistant 생성 및 메시지 보내기
+	name : 어시스턴트의 이름을 지정
+	instructions : 시스템 레벨의 지시어로, 해당 어시스턴트가 모든 대화에서 따르게 될 기본 규칙이나 역할
+	model : 어시스턴트가 사용할 언어 모델을 지정
+	GPT-3.5 계열 : gpt-3.5-turbo - 빠르고 효율적인 모델(추천)
+	기타 : dall-e-3 - 이미지 생성용 whisper-1 - 음성 인식용 tts-1, tts-1-hd - 텍스트 음성 변환용
+	tools : 어시스턴트에 활성화할 도구 목록
+
+	Assistant_chatbot (assistant_chatbot.py)
+	1. client 생성
+	2. assistant 생성 
+	3. thread 생성 : 기억담당
+	while True :
+    		4. thread에 user 메세지 추가
+    		5. run 수행(assistant.id, thread.id필요)
+    		6. 최종 assistant 답변 출력
+	7. 대화 이력 뽑기
+
+4. 파일 업로드 및 코드 인터프리터 활용
+	코드 인터프리터 사용 시 고려사항
+		실행 시간
+		파일 접근
+		보안
+
+
+
+OpenAI Assistants API function calling
+
+1. 함수 호출 기능 소개
+	실시간/외부 데이터 활용 : 모델이 최신 정보(날씨, 주가, 뉴스 등)를 함수로부터 받아와 답변에 반영
+	모델 한계 보완 : 수학 계산, 데이터베이스 질의 등 모델이 직접 처리하기 어려운 요청을 외부 로직으로 해결
+	도메인 확장 : 개발자가 정의한 임의의 함수로 모델의 기능을 확장할 수 있어, 특정 분야나 서비스에 특화된 어시스턴트를 구현
+
+2. API 키 설정 및 OpenAI 클라이언트 초기화
+
+3. 외부 함수 정의 및 테스트
+	날씨 정보를 가져오는 함수 : get_weather 함수를 정의
+	위도(latitude)와 경도(longitude)를 받아 해당 위치의 현재 기온을 섭씨로 반환
+	함수는 requests 라이브러리를 통해 API를 호출하고, 응답 JSON에서 온도 값을 추출하여 반환
+
+4. 함수 툴 설정 및 모델 응답 생성
+	tools라는 리스트에 함수 정보를 구성
+		type:"function"으로 함수를 정의
+		name:"get_weather"
+		description:"저장된 좌표의 현재 온도를 섭씨 단위로 구합니다"와 같이 설정
+		parameters 필드 : 함수가 요구하는 인자들의 JSON 스키마(여기서는 latitude와 longitude 숫자형, 둘 다 필수)를 명시
+	messages를 준비
+	client.chat.completions.create를 호출
+
+5. 함수 호출 결과 처리 및 최종 답변

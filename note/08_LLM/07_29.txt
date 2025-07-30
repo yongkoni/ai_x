@@ -1,0 +1,50 @@
+Retrieval Augmented Generation(RAG)
+
+
+1. vector Embedding Model 성능비교
+
+문장 → 벡터(1차원 숫자 배열 [8.1,9.1, 2, 5, 4, 3....])
+
+유사도 계산하는 방법
+	1) 유클리드 거리 : 두 벡터간의 거리가 가까운지
+	2) 코사인유사도 : 두 벡터간 방향이 유사한지
+	3) dot product : 두 벡터간의 곱을 사용하여 거리와 방향을 모두 고려
+
+openAI API의 embedding model 사용
+
+upstage의 embedding model 사용 : 한국에 embedding에는 openai보다 성능이 훨씬 좋다
+
+
+2. ChatOpenAI와 렝체인을 활용한 검증
+
+LLM 답변 생성
+	1) OpenAI SDK를 선택 : 세밀한 제어가 필요할 때, 성능 최적화가 중요할 때
+	2) LangChain을 선택 : 내부적으로 자동 메세지 형태를 변환해 줌
+
+
+3. ChatUpstage와 렝체인을 활용한 검증 
+
+LLM 답변 생성
+	1) OpenAI SDK를 사용
+	2) LangChain을 선택 : 발급받은 API Key를 .env에 UPSTAGE_API_KEY라고 저장하면 별도의 설정없이 ChatUpstage를 바로 사용
+
+
+4. ChatOllama를 활용한 검증 
+
+LLM 답변 생성
+	https://ollama.com/ 에서 모델 선택(llama3.2:1b)
+	powershell이나 cmd창에서 ollama pull llama3.2:1b
+
+코랩에서 ollama(exaone3.5:2.4b) 돌려기
+
+
+5. LangChain과 vectorDatabase 저장 없이 RAG구현
+
+RAG 절차
+	1. 문서를 읽는다 (python-docx 이용)
+	2. 읽어온 문서를 쪼갠다 (tiktoken 이용)
+        		- 모델의 context window를 초과 (128,000 context window)
+       		- 문서가 길면(input이 길면), 비용과 시간이 오래 걸림
+    	3. 쪼갠 문서를 임베딩 → vector database에 저장 → chroma (local vector DB), pinecorn (클라우드 vector DB)
+    	4. 질문과 vector Database의 유사도 검색
+    	5. 유사도 검색으로 가져온 문서를 LLM에 질문과 같이 전달하여 답변 생성

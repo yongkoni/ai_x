@@ -1,0 +1,52 @@
+Retrieval Augmented Generation(RAG)
+
+6. LangChain과 vectorDatabase를 활용한 RAG구현
+
+RAG 구현 절차
+	1. 문서의 내용을 읽는다 (document_loader를 이용)
+	2. 문서를 쪼갠다 (한번에 이해하고 처리할 수 있는 입력 + 출력 토큰수가 제한)
+	3. 쪼갠 문서를 임베딩하여 vector database에 넣음
+		- OpenAIEmbeddings 이용해서 임베딩
+	4. 질문을 이용해 유사도 검색
+	5. 유사도 검색한 문서를 LLM에 질문으로 전달하여 답변 얻음 (제공되는 Prompt활용)
+	6. Augmentation을 위한 제공되는 Prompt활용하여 langchain으로 답변 생성
+		- RetrievalQA를 통해 LLM전달 (create_retrieval_chain이 대체)
+
+
+7. LangChain과 vectorDatabase를 활용한 RAG구현 (UpstageEmbedding)
+
+RAG 구현 절차
+	1. 문서를 쪼갠다 (한번에 이해하고 처리할 수 있는 입력 + 출력 토큰수가 제한)
+	2. 쪼갠 문서를 임베딩하여 vector database에 넣음
+		- UpstageEmbeddings 이용해서 임베딩
+	3. 질문을 이용해 유사도 검색
+	4. 유사도 검색한 문서를 LLM에 질문으로 전달하여 답변 얻음 (제공되는 Prompt활용)
+	5. Augmentation을 위한 제공되는 Prompt활용하여 langchain으로 답변 생성
+		- RetrievalQA를 통해 LLM전달 (create_retrieval_chain이 대체)
+
+
+8. chroma → pinecorn을 활용한 RAG구현
+	1. Knowledge Base 구성을 위한 데이터 생성 (소득세법(법률)(제20615호)(20250701).docx)
+		- embedding = OpenAIEmbeddings(model = "text-embedding-3-large")
+	2. 답변 생성을 위한 Retrieval
+	3. 제공되는 prompt를 활용하여 답변 생성
+
+
+9. chroma → pinecorn을 활용한 RAG구현(UpstageEmbedding)
+	1. Knowledge Base 구성을 위한 데이터 생성 (소득세법(법률)(제20615호)(20250701).docx)
+		- embedding = UpstageEmbeddings(model = "solar-embedding-1-large")
+	2. 제공되는 prompt를 활용하여 답변 생성
+
+
+10. Retrieval의 효율개선을 위한 전처리(table)
+	1. Knowledge Base 구성을 위한 데이터 생성 (with_table.docx)
+		- embedding = UpstageEmbeddings(model = "solar-embedding-1-large")
+	2. 제공되는 prompt를 활용하여 답변 생성
+
+11. Retrieval의 효율개선을 위한 전처리(markdown) 키워드사전활용
+	1. Knowledge Base 구성을 위한 데이터 생성 (with_markdown.docx)
+		- embedding = UpstageEmbeddings(model = "solar-embedding-1-large")
+	2. 답변 생성 전 retrieval 확인
+		- 직장인의 소득세
+	3. 제공되는 prompt를 활용하여 답변 생성
+		- 사람을 나타내는 표현 → 거주자로 변경
